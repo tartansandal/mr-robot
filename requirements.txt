@@ -1,0 +1,6 @@
+# Development and Testing
+pytest
+pytest-cov
+mccabe
+flake8
+pylama

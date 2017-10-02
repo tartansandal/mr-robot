@@ -1,7 +1,7 @@
 # These module level constants are used to restrict the possible positions on
 # the table
 
-# FIXME make these sets read_only
+# FIXME make these sets read_only -- not sure there is such a thing in python
 x_range = {0, 1, 2, 3, 4}
 y_range = {0, 1, 2, 3, 4}
 f_range = {'NORTH', 'EAST', 'SOUTH', 'WEST'}

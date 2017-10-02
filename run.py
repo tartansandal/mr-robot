@@ -7,6 +7,7 @@ from robot.position import InvalidPosition
 
 
 class InvalidCommand(Exception):
+    """Raised when an invalid command is given"""
     pass
 
 

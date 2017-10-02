@@ -1,7 +1,26 @@
 from robot.position import Position, InvalidPosition
 
 # XXX big temptation to implement direction as a ring, but there are only
-# 4 cases, so a simple swith is probably less code and confusion
+# 4 cases, so a simple switch is probably less code and confusion
+
+compass = {
+    'NORTH': {
+        'left': 'WEST',
+        'right': 'EAST'
+    },
+    'WEST': {
+        'left': 'SOUTH',
+        'right': 'NORTH'
+    },
+    'SOUTH': {
+        'left': 'EAST',
+        'right': 'WEST'
+    },
+    'EAST': {
+        'left': 'NORTH',
+        'right': 'SOUTH'
+    },
+}
 
 
 class Robot():
@@ -40,19 +59,7 @@ class Robot():
             return
 
         (x, y, f) = self._position.tuple()
-
-        if f == 'NORTH':
-            new = Position(x, y, 'WEST')
-        elif f == 'WEST':
-            new = Position(x, y, 'SOUTH')
-        elif f == 'SOUTH':
-            new = Position(x, y, 'EAST')
-        elif f == 'EAST':
-            new = Position(x, y, 'NORTH')
-        else:
-            raise InvalidPosition
-
-        self._position = new
+        self._position = Position(x, y, compass[f]['left'])
 
     def right(self):
         """Rotate the robot 90 degrees to the right"""
@@ -60,18 +67,7 @@ class Robot():
             return
 
         (x, y, f) = self._position.tuple()
-        if f == 'NORTH':
-            new = Position(x, y, 'EAST')
-        elif f == 'EAST':
-            new = Position(x, y, 'SOUTH')
-        elif f == 'SOUTH':
-            new = Position(x, y, 'WEST')
-        elif f == 'WEST':
-            new = Position(x, y, 'NORTH')
-        else:
-            raise InvalidPosition
-
-        self._position = new
+        self._position = Position(x, y, compass[f]['right'])
 
     def report(self):
         """Print the current position of the robot"""

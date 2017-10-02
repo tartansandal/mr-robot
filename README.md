@@ -40,7 +40,7 @@ I will attempt to do this Python 3 using more modern tooling.
 * There is bound to be a command line parser that supports both interactive
   and streaming input. Although its pretty simple, I would rather not reinvent
   that wheel. _Edit: Looking around, it seems a simple regexp matcher will do fine --
-  anything else is overkill._
+  anything else is overkill, although the `cmd` module would probably be okay._
 
 * I can't really see anyway around having a class for the coordinates on the
   table. We can build a lot of the key constraints into that class.  Having

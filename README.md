@@ -9,7 +9,7 @@ This is a simple command line application described by
 
 This coding challenge was originally designed by Jon Eaves in 2007 while recruiting for ANZ. See
 
-    https://joneaves.wordpress.com/2014/07/21/toy-robot-coding-test/
+https://joneaves.wordpress.com/2014/07/21/toy-robot-coding-test/
 
 for a nice break down of its intent and limitations as a filtering tool for
 recruitment purposes.
@@ -22,7 +22,7 @@ programming, however, it still a perfectly adequate filtering tool.
 A quick google search shows a number of attempts at this challenge in
 a variety of languages. The first Python attempt I came across was:
 
-    https://github.com/jessehon/robot-simulator
+https://github.com/jessehon/robot-simulator
 
 which seems to be a fairly adequate solution in Python 2.
 

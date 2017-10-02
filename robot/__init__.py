@@ -25,11 +25,11 @@ class Robot():
             if f == 'NORTH':
                 new = Position(x, y + 1, f)
             elif f == 'EAST':
-                new = Position(x - 1, y, f)
+                new = Position(x + 1, y, f)
             elif f == 'SOUTH':
                 new = Position(x, y - 1, f)
             elif f == 'WEST':
-                new = Position(x + 1, y, f)
+                new = Position(x - 1, y, f)
             self._position = new
         except InvalidPosition:
             pass
@@ -42,12 +42,12 @@ class Robot():
         (x, y, f) = self._position.tuple()
 
         if f == 'NORTH':
-            new = Position(x, y, 'EAST')
-        elif f == 'EAST':
-            new = Position(x, y, 'SOUTH')
-        elif f == 'SOUTH':
             new = Position(x, y, 'WEST')
         elif f == 'WEST':
+            new = Position(x, y, 'SOUTH')
+        elif f == 'SOUTH':
+            new = Position(x, y, 'EAST')
+        elif f == 'EAST':
             new = Position(x, y, 'NORTH')
         else:
             raise InvalidPosition
@@ -61,12 +61,12 @@ class Robot():
 
         (x, y, f) = self._position.tuple()
         if f == 'NORTH':
-            new = Position(x, y, 'WEST')
-        elif f == 'WEST':
-            new = Position(x, y, 'SOUTH')
-        elif f == 'SOUTH':
             new = Position(x, y, 'EAST')
         elif f == 'EAST':
+            new = Position(x, y, 'SOUTH')
+        elif f == 'SOUTH':
+            new = Position(x, y, 'WEST')
+        elif f == 'WEST':
             new = Position(x, y, 'NORTH')
         else:
             raise InvalidPosition

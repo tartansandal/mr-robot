@@ -144,7 +144,7 @@ class TestMovement:
         robot.move()
         robot.report()
         out, err = capsys.readouterr()
-        assert out == '4,4,WEST\n'
+        assert out == '4,4,EAST\n'
 
         robot.right()
         robot.move()
@@ -162,20 +162,20 @@ class TestMovement:
         robot.move()
         robot.report()
         out, err = capsys.readouterr()
-        assert out == '0,0,EAST\n'
+        assert out == '0,0,WEST\n'
 
     def test_valid_reverse_circuit(self, capsys):
         """Traverse the edges of the board anti-clockwise"""
         robot = Robot()
 
-        robot.place({'x': 0, 'y': 0, 'f': 'WEST'})
+        robot.place({'x': 0, 'y': 0, 'f': 'EAST'})
         robot.move()
         robot.move()
         robot.move()
         robot.move()
         robot.report()
         out, err = capsys.readouterr()
-        assert out == '4,0,WEST\n'
+        assert out == '4,0,EAST\n'
 
         robot.left()
         robot.move()
@@ -193,7 +193,7 @@ class TestMovement:
         robot.move()
         robot.report()
         out, err = capsys.readouterr()
-        assert out == '0,4,EAST\n'
+        assert out == '0,4,WEST\n'
 
         robot.left()
         robot.move()

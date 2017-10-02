@@ -7,16 +7,14 @@ class TestPlacement:
     # the "5x5 table" part of the brief, and that postioning off the table
     # should not be possible.
 
-    def test_valid_middle(self, capsys):
-        robot = Robot()
+    def test_valid_middle(self, robot, capsys):
 
         robot.place({'x': 1, 'y': 3, 'f': 'SOUTH'})
         robot.report()
         out, err = capsys.readouterr()
         assert out == '1,3,SOUTH\n'
 
-    def test_valid_edges(self, capsys):
-        robot = Robot()
+    def test_valid_edges(self, robot, capsys):
 
         robot.place({'x': 0, 'y': 3, 'f': 'SOUTH'})
         robot.report()
@@ -38,8 +36,7 @@ class TestPlacement:
         out, err = capsys.readouterr()
         assert out == '3,4,SOUTH\n'
 
-    def test_valid_corners(self, capsys):
-        robot = Robot()
+    def test_valid_corners(self, robot, capsys):
 
         robot.place({'x': 0, 'y': 0, 'f': 'SOUTH'})
         robot.report()
@@ -61,8 +58,7 @@ class TestPlacement:
         out, err = capsys.readouterr()
         assert out == '4,4,SOUTH\n'
 
-    def test_valid_direction(self, capsys):
-        robot = Robot()
+    def test_valid_direction(self, robot, capsys):
 
         robot.place({'x': 0, 'y': 0, 'f': 'NORTH'})
         robot.report()
@@ -84,8 +80,7 @@ class TestPlacement:
         out, err = capsys.readouterr()
         assert out == '0,0,EAST\n'
 
-    def test_invalid_position(self, capsys):
-        robot = Robot()
+    def test_invalid_position(self, robot, capsys):
 
         # Set to known valid position.  All invalid attempts at positioning
         # should silently fail and not change the current position
@@ -124,9 +119,8 @@ class TestPlacement:
 
 
 class TestMovement:
-    def test_no_position(self, capsys):
+    def test_no_position(self, robot, capsys):
         """Can't move the robot if it does not have a position"""
-        robot = Robot()
 
         robot.report()
         out, err = capsys.readouterr()
@@ -151,9 +145,8 @@ class TestMovement:
         assert out == ''
         assert err == ''
 
-    def test_valid_circuit(self, capsys):
+    def test_valid_circuit(self, robot, capsys):
         """Traverse the edges of the board clockwise"""
-        robot = Robot()
 
         robot.place({'x': 0, 'y': 0, 'f': 'NORTH'})
         robot.move()
@@ -191,9 +184,8 @@ class TestMovement:
         out, err = capsys.readouterr()
         assert out == '0,0,WEST\n'
 
-    def test_valid_reverse_circuit(self, capsys):
+    def test_valid_reverse_circuit(self, robot, capsys):
         """Traverse the edges of the board anti-clockwise"""
-        robot = Robot()
 
         robot.place({'x': 0, 'y': 0, 'f': 'EAST'})
         robot.move()
@@ -233,27 +225,21 @@ class TestMovement:
 
 
 class TestExamples:
-    def test_a(self, capsys):
-        robot = Robot()
-
+    def test_a(self, robot, capsys):
         robot.place({'x': 0, 'y': 0, 'f': 'NORTH'})
         robot.move()
         robot.report()
         out, err = capsys.readouterr()
         assert out == '0,1,NORTH\n'
 
-    def test_b(self, capsys):
-        robot = Robot()
-
+    def test_b(self, robot, capsys):
         robot.place({'x': 0, 'y': 0, 'f': 'NORTH'})
         robot.left()
         robot.report()
         out, err = capsys.readouterr()
         assert out == '0,0,WEST\n'
 
-    def test_c(self, capsys):
-        robot = Robot()
-
+    def test_c(self, robot, capsys):
         robot.place({'x': 1, 'y': 2, 'f': 'EAST'})
         robot.move()
         robot.move()

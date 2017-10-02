@@ -124,6 +124,33 @@ class TestPlacement:
 
 
 class TestMovement:
+    def test_no_position(self, capsys):
+        """Can't move the robot if it does not have a position"""
+        robot = Robot()
+
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == ''
+        assert err == ''
+
+        robot.move()
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == ''
+        assert err == ''
+
+        robot.left()
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == ''
+        assert err == ''
+
+        robot.right()
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == ''
+        assert err == ''
+
     def test_valid_circuit(self, capsys):
         """Traverse the edges of the board clockwise"""
         robot = Robot()

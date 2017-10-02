@@ -23,6 +23,15 @@ compass = {
 }
 
 
+def has_position(method):
+    def wrapper(self):
+        if not self._position:
+            return
+        method(self)
+
+    return wrapper
+
+
 class Robot():
     """Simulate a robot moving on a 5x5 grid"""
 
@@ -35,11 +44,9 @@ class Robot():
         except InvalidPosition:
             pass
 
+    @has_position
     def move(self):
         """Move the robot one unit in the direction it is currently facing"""
-        if not self._position:
-            return
-
         c = self._position.coords()
         try:
             f = c['f']
@@ -56,11 +63,9 @@ class Robot():
         except InvalidPosition:
             pass
 
+    @has_position
     def left(self):
         """Rotate the robot 90 degrees to the left"""
-        if not self._position:
-            return
-
         c = self._position.coords()
         try:
             f = c['f']
@@ -69,11 +74,9 @@ class Robot():
         except InvalidPosition:
             pass
 
+    @has_position
     def right(self):
         """Rotate the robot 90 degrees to the right"""
-        if not self._position:
-            return
-
         c = self._position.coords()
         try:
             f = c['f']
@@ -82,9 +85,7 @@ class Robot():
         except InvalidPosition:
             pass
 
+    @has_position
     def report(self):
         """Print the current position of the robot"""
-        if not self._position:
-            return
-
         print(self._position)

@@ -24,6 +24,8 @@ compass = {
 
 
 class Robot():
+    """Simulate a robot moving on a 5x5 grid"""
+
     _position = None
 
     def place(self, coords):

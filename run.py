@@ -42,16 +42,16 @@ def parse(line):
     if not valid:
         raise InvalidCommand()
 
-    args = None
+    coords = None
     cmd = valid.group('cmd')
     if cmd == 'PLACE':
-        args = dict(
+        coords = dict(
                 x=int(valid.group('x')),  # regexp ensures the str is a digit
                 y=int(valid.group('y')),
                 f=valid.group('f'),
                 )
 
-    return cmd, args
+    return cmd, coords
 
 
 def main():
@@ -63,12 +63,13 @@ def main():
     for line in sys.stdin:
         try:
 
-            (cmd, args) = parse(line)
+            (cmd, coords) = parse(line)
             if cmd == 'PLACE':
-                robot.place(args)
+                robot.place(coords)
             else:
-                # Assume Robot has a method for each valid command
-                # This is covered by testing and RegExp
+                # Assume Robot has a method for each valid command.
+                # (A potential weak point, but this is covered sufficiently by
+                # the command_pattern testing)
                 getattr(robot, cmd.lower())()
 
         except InvalidCommand:

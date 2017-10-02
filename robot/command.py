@@ -1,11 +1,10 @@
 from re import compile, X
 
 # We assume (although it is not specified) that commands must strictly match
-# the specification, i.e., leading or trailing spaces are not allowed, commands
-# are case sensitive, exactly one space between the PLACE command and its
+# the breif, i.e., leading or trailing spaces are not allowed, commands are
+# case sensitive, exactly one space between the PLACE command and its
 # arguments.  We could tighten this even further by limiting values of the
-# input x and y coordinates, however, that is not made explicit in the
-# specification.
+# input x and y coordinates, however, that is not made explicit in the brief.
 command_pattern = compile(
     r"""
         ^                                     # start

@@ -3,9 +3,9 @@ from robot import Robot
 
 class TestPlacement:
     # Seamingly low value tests, since the implementation uses set membership
-    # to restrict values; however, we do need to assert that the program meets
-    # the "5x5 table" part of the specification, and that postioning off the
-    # table should not be possible.
+    # to restrict values. However, we do need to assert that the program meets
+    # the "5x5 table" part of the brief, and that postioning off the table
+    # should not be possible.
 
     def test_valid_middle(self, capsys):
         robot = Robot()

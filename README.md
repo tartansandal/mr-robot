@@ -2,8 +2,7 @@
 
 ## Description
 
-This is a simple command line application described by
-[specification.md](specification.md)
+This is a simple command line application described by [brief.md](brief.md)
 
 ## Preamble
 

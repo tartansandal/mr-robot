@@ -12,17 +12,16 @@ class Position():
     _y = None
     _f = None
 
-    def __init__(self, x, y, f):
-        if x in x_range and y in y_range and f in f_range:
-            self._x = x
-            self._y = y
-            self._f = f
+    def __init__(self, c):
+        if c['x'] in x_range and c['y'] in y_range and c['f'] in f_range:
+            self._x = c['x']
+            self._y = c['y']
+            self._f = c['f']
         else:
             raise InvalidPosition
 
-    # is there another way? __getitem__?
-    def tuple(self):
-        return self._x, self._y, self._f
+    def coords(self):
+        return dict(x=self._x, y=self._y, f=self._f)
 
     def __str__(self):
         return "{},{},{}".format(self._x, self._y, self._f)

@@ -26,30 +26,31 @@ compass = {
 class Robot():
     _position = None
 
-    def place(self, args):
+    def place(self, coords):
         """Place robot at the specified position on the table"""
         try:
-            self._position = Position(**args)
+            self._position = Position(coords)
         except InvalidPosition:
             pass
 
     def move(self):
         """Move the robot one unit in the direction it is currently facing"""
         if not self._position:
-            print('ERROR')
             return
 
-        (x, y, f) = self._position.tuple()
+        c = self._position.coords()
         try:
+            f = c['f']
             if f == 'NORTH':
-                new = Position(x, y + 1, f)
+                c['y'] += 1
             elif f == 'EAST':
-                new = Position(x + 1, y, f)
+                c['x'] += 1
             elif f == 'SOUTH':
-                new = Position(x, y - 1, f)
+                c['y'] -= 1
             elif f == 'WEST':
-                new = Position(x - 1, y, f)
-            self._position = new
+                c['x'] -= 1
+
+            self._position = Position(c)
         except InvalidPosition:
             pass
 
@@ -58,9 +59,11 @@ class Robot():
         if not self._position:
             return
 
-        (x, y, f) = self._position.tuple()
+        c = self._position.coords()
         try:
-            self._position = Position(x, y, compass[f]['left'])
+            f = c['f']
+            c['f'] = compass[f]['left']
+            self._position = Position(c)
         except InvalidPosition:
             pass
 
@@ -69,9 +72,11 @@ class Robot():
         if not self._position:
             return
 
-        (x, y, f) = self._position.tuple()
+        c = self._position.coords()
         try:
-            self._position = Position(x, y, compass[f]['right'])
+            f = c['f']
+            c['f'] = compass[f]['right']
+            self._position = Position(c)
         except InvalidPosition:
             pass
 
@@ -79,4 +84,5 @@ class Robot():
         """Print the current position of the robot"""
         if not self._position:
             return
+
         print(self._position)

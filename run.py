@@ -3,7 +3,6 @@
 import sys
 from re import compile, X
 from robot import Robot
-from robot.position import InvalidPosition
 
 
 class InvalidCommand(Exception):

@@ -59,7 +59,10 @@ class Robot():
             return
 
         (x, y, f) = self._position.tuple()
-        self._position = Position(x, y, compass[f]['left'])
+        try:
+            self._position = Position(x, y, compass[f]['left'])
+        except InvalidPosition:
+            pass
 
     def right(self):
         """Rotate the robot 90 degrees to the right"""
@@ -67,7 +70,10 @@ class Robot():
             return
 
         (x, y, f) = self._position.tuple()
-        self._position = Position(x, y, compass[f]['right'])
+        try:
+            self._position = Position(x, y, compass[f]['right'])
+        except InvalidPosition:
+            pass
 
     def report(self):
         """Print the current position of the robot"""

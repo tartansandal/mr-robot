@@ -3,6 +3,7 @@
 import sys
 from re import compile, X
 from robot import Robot
+from robot.position import InvalidPosition
 
 
 class InvalidCommand(Exception):
@@ -61,13 +62,15 @@ def main():
 
     for line in sys.stdin:
         try:
+
             (cmd, args) = parse(line)
             if cmd == 'PLACE':
                 robot.place(args)
             else:
                 # Assume Robot has a method for each valid command
-                # Covered off by testing and RegExp
+                # This is covered by testing and RegExp
                 getattr(robot, cmd.lower())()
+
         except InvalidCommand:
             # Silently ignore invalid commands
             pass

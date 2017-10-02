@@ -1,6 +1,6 @@
 #! ./env/bin/python
 
-import sys
+import fileinput
 from robot import Robot
 from robot.command import parse, InvalidCommand
 
@@ -11,7 +11,7 @@ def main():
     Simulate a robot interactively."""
     robot = Robot()
 
-    for line in sys.stdin:
+    for line in fileinput.input():
         try:
 
             (cmd, coords) = parse(line)

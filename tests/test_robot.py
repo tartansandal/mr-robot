@@ -203,3 +203,35 @@ class TestMovement:
         robot.report()
         out, err = capsys.readouterr()
         assert out == '0,0,SOUTH\n'
+
+
+class TestExamples:
+    def test_a(self, capsys):
+        robot = Robot()
+
+        robot.place({'x': 0, 'y': 0, 'f': 'NORTH'})
+        robot.move()
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == '0,1,NORTH\n'
+
+    def test_b(self, capsys):
+        robot = Robot()
+
+        robot.place({'x': 0, 'y': 0, 'f': 'NORTH'})
+        robot.left()
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == '0,0,WEST\n'
+
+    def test_c(self, capsys):
+        robot = Robot()
+
+        robot.place({'x': 1, 'y': 2, 'f': 'EAST'})
+        robot.move()
+        robot.move()
+        robot.left()
+        robot.move()
+        robot.report()
+        out, err = capsys.readouterr()
+        assert out == '3,3,NORTH\n'

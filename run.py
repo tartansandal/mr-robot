@@ -1,7 +1,6 @@
 #! ./env/bin/python
 
 import sys
-from re import compile, X
 from robot import Robot
 from robot.command import parse, InvalidCommand
 
@@ -9,7 +8,7 @@ from robot.command import parse, InvalidCommand
 def main():
     """Run Mr Robot, run!
 
-    Perform the robot simulation interactively."""
+    Simulate a robot interactively."""
     robot = Robot()
 
     for line in sys.stdin:

@@ -1,10 +1,9 @@
 # These module level constants are used to restrict the possible positions on
 # the table
 
-# FIXME make these sets read_only -- not sure there is such a thing in python
-x_range = {0, 1, 2, 3, 4}
-y_range = {0, 1, 2, 3, 4}
-f_range = {'NORTH', 'EAST', 'SOUTH', 'WEST'}
+X_RANGE = {0, 1, 2, 3, 4}
+Y_RANGE = {0, 1, 2, 3, 4}
+F_RANGE = {'NORTH', 'EAST', 'SOUTH', 'WEST'}
 
 
 class Position():
@@ -13,7 +12,7 @@ class Position():
     _f = None
 
     def __init__(self, c):
-        if c['x'] in x_range and c['y'] in y_range and c['f'] in f_range:
+        if c['x'] in X_RANGE and c['y'] in Y_RANGE and c['f'] in F_RANGE:
             self._x = c['x']
             self._y = c['y']
             self._f = c['f']

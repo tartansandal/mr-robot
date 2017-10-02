@@ -5,7 +5,7 @@ from re import compile, X
 # case sensitive, exactly one space between the PLACE command and its
 # arguments.  We could tighten this even further by limiting values of the
 # input x and y coordinates, however, that is not made explicit in the brief.
-command_pattern = compile(
+PATTERN = compile(
     r"""
         ^                                     # start
         (?P<cmd>MOVE|LEFT|RIGHT|REPORT|PLACE) # command
@@ -27,7 +27,7 @@ def parse(line):
     string.
     """
 
-    valid = command_pattern.search(line)
+    valid = PATTERN.search(line)
     if not valid:
         raise InvalidCommand()
 

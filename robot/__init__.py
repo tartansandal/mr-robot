@@ -1,9 +1,7 @@
 from robot.position import Position, InvalidPosition
 
-# XXX big temptation to implement direction as a ring, but there are only
-# 4 cases, so a simple switch is probably less code and confusion
-
-compass = {
+# A simple ring implemented as nested dicts (a whole class would be overkill)
+COMPASS = {
     'NORTH': {
         'left': 'WEST',
         'right': 'EAST'
@@ -69,7 +67,7 @@ class Robot():
         c = self._position.coords()
         try:
             f = c['f']
-            c['f'] = compass[f]['left']
+            c['f'] = COMPASS[f]['left']
             self._position = Position(c)
         except InvalidPosition:
             pass
@@ -80,7 +78,7 @@ class Robot():
         c = self._position.coords()
         try:
             f = c['f']
-            c['f'] = compass[f]['right']
+            c['f'] = COMPASS[f]['right']
             self._position = Position(c)
         except InvalidPosition:
             pass

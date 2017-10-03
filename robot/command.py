@@ -14,7 +14,7 @@ PATTERN = compile(
             (?P<x>\d+),                  # x coord
             (?P<y>\d+),                  # y coord
             (?P<f>NORTH|EAST|SOUTH|WEST) # facing
-        )?
+            )?
         $                                     # end
         """, X
 )
@@ -34,11 +34,13 @@ def parse(line):
     coords = None
     cmd = valid.group('cmd')
     if cmd == 'PLACE':
+        if not valid.group('f'):
+            raise InvalidCommand
         coords = dict(
-                x=int(valid.group('x')),  # regexp ensures the str is a digit
-                y=int(valid.group('y')),
-                f=valid.group('f'),
-                )
+            x=int(valid.group('x')),  # regexp ensures the str is a digit
+            y=int(valid.group('y')),
+            f=valid.group('f'),
+        )
 
     return cmd, coords
 

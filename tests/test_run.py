@@ -1,5 +1,7 @@
 from run import main, parse
 
+import fileinput
+
 
 class TestParsing:
     def test_valid_place_cmd(self):
@@ -33,16 +35,41 @@ class TestParsing:
 
 
 class TestRuntime:
-    # FIXME howto test command line and file stuff
-    # do I have to monkey patch input?
-    # do I have to fork and actually run the test?
-    # should I use a fixture for that?
+    def test_run_example_a(self, monkeypatch, capsys):
+        def example():
+            yield "PLACE 0,0,NORTH\n"
+            yield "MOVE\n"
+            yield "REPORT\n"
 
-    def test_run_example_a(self):
-        pass
+        monkeypatch.setattr(fileinput, 'input', example)
 
-    def test_run_example_b(self):
-        pass
+        main()
+        out, err = capsys.readouterr()
+        assert out == "0,1,NORTH\n"
 
-    def test_run_example_c(self):
-        pass
+    def test_run_example_b(self, monkeypatch, capsys):
+        def example():
+            yield "PLACE 0,0,NORTH\n"
+            yield "LEFT\n"
+            yield "REPORT\n"
+
+        monkeypatch.setattr(fileinput, 'input', example)
+
+        main()
+        out, err = capsys.readouterr()
+        assert out == "0,0,WEST\n"
+
+    def test_run_example_c(self, monkeypatch, capsys):
+        def example():
+            yield "PLACE 1,2,EAST\n"
+            yield "MOVE\n"
+            yield "MOVE\n"
+            yield "LEFT\n"
+            yield "MOVE\n"
+            yield "REPORT\n"
+
+        monkeypatch.setattr(fileinput, 'input', example)
+
+        main()
+        out, err = capsys.readouterr()
+        assert out == "3,3,NORTH\n"

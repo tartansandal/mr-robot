@@ -52,6 +52,19 @@ I will attempt to do this Python 3 using more modern tooling.
 * I would love to throw a generator into this somehow, just to show off, but
   I can't see how we would do that in any meaningful way.
 
+### Questions
+
+1. The brief simply says that input errors should be ignored. We print
+   a helpful error message to stderr, but its unclear if this is counter to
+   the brief. I've chosen to ignore errors, although this has made some
+   testing more complicated than it could be.
+
+2. The brief is unclear on the exact kind of user interface that is expected.
+   I'm assuming a commandl-ine program that accepts interactive commands fills
+   the brief.  Piping command to the program on stdin will also work with this
+   solution, as will giving a filename as the first argument.
+
+
 ## Usage
 
 This is a coding challenge so we do not expect it to be installed on any

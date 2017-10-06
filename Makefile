@@ -22,5 +22,5 @@ lint: env
 
 test: env
 	source env/bin/activate && \
-	pytest tests
+	pytest -v tests
 

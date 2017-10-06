@@ -68,7 +68,7 @@ I will attempt to do this Python 3 using more modern tooling.
 ## Usage
 
 This is a coding challenge so we do not expect it to be installed on any
-system or distributed in any other than a git checkout.
+system or distributed in any form other than a git checkout.
 
 To setup your virtual environment:
 

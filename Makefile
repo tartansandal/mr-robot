@@ -6,7 +6,7 @@ help:
 	@echo "  lint        check style with flake8"
 	@echo "  test        run all your tests using pytest"
 	@echo
-	@echo "Remember to activate your environment with: env/bin/activate"
+	@echo "Remember to activate your venv with: source env/bin/activate"
 
 env:
 	python3 -m venv env && \

@@ -1,6 +1,3 @@
-from robot import Robot
-
-
 class TestPlacement:
     # Seamingly low value tests, since the implementation uses set membership
     # to restrict values. However, we do need to assert that the program meets

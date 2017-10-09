@@ -19,7 +19,7 @@ def parse(line):
     tokens = line.strip().split()
 
     cmd = tokens[0]
-    if not cmd in {'MOVE', 'LEFT', 'RIGHT', 'REPORT', 'PLACE'}:
+    if cmd not in {'MOVE', 'LEFT', 'RIGHT', 'REPORT', 'PLACE'}:
         raise InvalidCommand
 
     coords = None
